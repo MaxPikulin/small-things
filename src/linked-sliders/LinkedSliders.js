@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
-import Slider from './Slider';
+import React, { useState, useEffect } from 'react';
+// import Slider from './Slider';
 import InputCals from './InputCals';
 
 const LinkedSliders = () => {
   const [calsPerDay, useCalsPerDay] = useState(0);
+  const [week, useWeek] = useState([]);
+  useEffect(() => {
+    createWeek();
+  }, []);
   
   const createWeek = () => {
-    const week = [];
+    let arr = [];
     for (let i = 0; i < 7; i++) {
-      week.push(
-        <Slider key={i} value={calsPerDay} />
-      );
+      arr.push({id: i});
     }
-    return week;
+    useWeek(week.concat(arr));
   }
   
   return (
     <div>
-      <InputCals cals={calsPerDay} change={useCalsPerDay} />
-      {createWeek()}
+    {console.log('week :', week)}
+      <InputCals
+        cals={calsPerDay}
+        change={useCalsPerDay}
+      />
     </div>
   );
 };

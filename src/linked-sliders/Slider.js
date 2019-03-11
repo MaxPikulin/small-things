@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 
 const Slider = ({ value }) => {
   const [range, useRange] = useState(0);
-  // useRange(value);
+  
   return (
     <div>
       <input
         type='text'
         readOnly
-        value={value}
+        value={
+          (() => {
+            if (value !== range) {
+              useRange(value);
+            }
+            return range;
+          })()
+        }
       />
       <input
         type='range'
@@ -16,7 +23,9 @@ const Slider = ({ value }) => {
         min='0'
         max={value}
         onChange={(e) => {
-          useRange(e.target.value);
+          if (range !== +e.target.value) {
+            useRange(+e.target.value);
+          }
         }}
       />
       <input type='checkbox' />
