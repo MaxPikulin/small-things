@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const Slider = ({ value = 600, onChange = (v) => console.log(v)}) => {
-  const [range, useRange] = useState(0);
+  const [range, setRange] = useState(0);
   
-  useEffect(() => {useRange(value)}, [value])
+  useEffect(() => {setRange(value)}, [value])
   
   const onRangeChange = (e) => {
-    useRange(+e.target.value);
+    setRange(+e.target.value);
     onChange(range);
   }
 

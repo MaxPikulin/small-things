@@ -6,14 +6,14 @@ const LinkedSliders = () => {
   const sliderAmount = 7;
   let sliders = [{id: 9, value: 234}];
 
-  const [calsPerDay, useCalsPerDay] = useState(0);
-  const [week, useWeek] = useState([]);
-  const [total, useTotal] = useState(0);
-  const [perDay, usePerDay] = useState(0);
+  const [calsPerDay, setCalsPerDay] = useState(0);
+  const [week, setWeek] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [perDay, setPerDay] = useState(0);
 
   const changeTotal = (perDay) => {
-    usePerDay(perDay);
-    useTotal(perDay * sliderAmount);
+    setPerDay(perDay);
+    setTotal(perDay * sliderAmount);
   }
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const LinkedSliders = () => {
         <Slider key={i} value={perDay} />
       );
     }
-    useWeek(week.concat(arr));
+    setWeek(week.concat(arr));
     // console.log('sliders :', sliders);
     return sliders;
   }
