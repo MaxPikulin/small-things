@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Slider = ({ value, onChange, step }) => {
+const Slider = ({ value, onChange, step, id }) => {
   const [range, setRange] = useState(0);
   
   useEffect(() => {setRange(value)}, [value])
@@ -8,7 +8,7 @@ const Slider = ({ value, onChange, step }) => {
   const onRangeChange = (e) => {
     const value = +e.target.value;
     setRange(value);
-    onChange(value);
+    onChange(id, value);
   }
 
   return (
