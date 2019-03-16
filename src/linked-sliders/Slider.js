@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const Slider = ({ value = 600, onChange = (v) => console.log(v)}) => {
+const Slider = ({ value, onChange, step }) => {
   const [range, setRange] = useState(0);
   
   useEffect(() => {setRange(value)}, [value])
   
   const onRangeChange = (e) => {
-    setRange(+e.target.value);
-    onChange(range);
+    const value = +e.target.value;
+    setRange(value);
+    onChange(value);
   }
 
   return (
@@ -19,7 +20,7 @@ const Slider = ({ value = 600, onChange = (v) => console.log(v)}) => {
       />
       <input
         type='range'
-        defaultValue={value / 2}
+        defaultValue={value}
         min='0'
         max={value}
         onChange={onRangeChange}

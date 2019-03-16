@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import LinkedSliders from './linked-sliders/LinkedSliders';
 import Slider from './linked-sliders/Slider';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        {/* <LinkedSliders /> */}
-        <Slider />
-      </div>
-    );
+const App = () => {
+  const numSliders = 7;
+  
+  const handleSliderChange = (value) => {
+    console.log('value :', value);
   }
+  
+  return (
+    <div className="App">
+      {/* <LinkedSliders /> */}
+      <Slider 
+      value={1000}  
+      onChange={handleSliderChange}
+      step={numSliders}
+      />
+    </div>
+  );
 }
 
 export default App;
