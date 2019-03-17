@@ -6,7 +6,7 @@ import Slider from './linked-sliders/Slider';
 const App = () => {
   const numSliders = 7;
   const slidersValue = 1000;
-  const [sliders, setSliders] = useState({});
+  const [sliders, setSliders] = useState({0:{id:0, value: ''}});
   useEffect(() => {
     let sl = {};
     for (let i = 0; i < numSliders; i++) {
@@ -15,7 +15,7 @@ const App = () => {
     setSliders(sl);
   }, []);
   
-  useEffect(() => {console.log('value :', sliders)});
+  useEffect(() => {console.log('value :', sliders[3] && sliders[3].value)});
 
   const handleSliderChange = (id, value) => {
     setSliders({...sliders, ...{[id]: {id, value}}});
