@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Slider from './Slider';
 import InputCals from './InputCals';
 
+//кого я обманюю...
+
 const LinkedSliders = () => {
   const sliderAmount = 7;
-  let sliders = [{id: 9, value: 234}];
+  let sliders = [];
 
   const [calsPerDay, setCalsPerDay] = useState(0);
   const [week, setWeek] = useState([]);
